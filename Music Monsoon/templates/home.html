@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flip Divs</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+           background-image: url('../static/piano.jpg');
+           background-size: cover;
+           background-attachment: fixed;
+           background-repeat: no-repeat;
+       }
+       .container {
+           display: flex;
+           gap: 20px;
+           justify-content: center;
+           align-items: center;
+       }
+       .flip-card {
+           background-color: transparent;
+           width: 200px;
+           height: 200px;
+           perspective: 1000px;
+       }
+       .flip-card-inner {
+           position: relative;
+           width: 100%;
+           height: 100%;
+           text-align: center;
+           transition: transform 0.6s;
+           transform-style: preserve-3d;
+       }
+       .flip-card:hover .flip-card-inner {
+           transform: rotateY(180deg);
+       }
+       .flip-card-front, .flip-card-back {
+           position: absolute;
+           width: 100%;
+           height: 100%;
+           backface-visibility: hidden;
+           border-radius: 10px;
+           overflow: hidden;
+       }
+       .flip-card-front {
+           background: #bbb;
+           color: black;
+       }
+       .flip-card-front img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+       }
+       .flip-card-back {
+           background: linear-gradient(135deg, #d32013, #250fb7);
+           color: white;
+           transform: rotateY(180deg);
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+       .flip-card-back button {
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+           border: none;
+           background-color: #000000;
+           color: #ea491d;
+           border-radius: 5px;
+           transition: background-color 0.3s;
+       }
+       .flip-card-back button:hover {
+           background-color: #e0e0e0;
+       }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="../static/mouse.jpg" alt="Image 1">
+</div>
+<div class="flip-card-back">
+<a href="{{url_for('weather')}}"><button>Check the weather</button></a>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="../static/moon.jpg" alt="Image 2">
+</div>
+<div class="flip-card-back">
+<a href="{{url_for('music_upload')}}"><button>Upload your songs</button></a>
+</div>
+</div>
+</div>
+<div class="flip-card">
+<div class="flip-card-inner">
+<div class="flip-card-front">
+<img src="../static/tiger.png" alt="Image 3">
+</div>
+<div class="flip-card-back">
+<a href="{{url_for('musiclist')}}"><button>Ride on a musical voyage</button></a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

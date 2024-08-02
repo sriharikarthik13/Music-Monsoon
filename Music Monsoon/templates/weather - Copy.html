@@ -1,0 +1,108 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/styles.css">
+    </head>
+    <body>
+        <div class="card">
+            <div class="search">
+                <input type="text" id ="city" placeholder="Enter City Name" spellcheck="false">
+                <div id="searchb"><button><img src="./images/search.png"></button></div>
+            </div>
+            <div class="weather">
+                <img  id="weather-icon">
+                <h1 class="temp"><div id="tempval"></div></h1>
+                <h2 class="city"><div id="cityval"></div></h1>
+                 <div class="details">
+                
+                    <div class="col">
+                        <div id="vismusic">
+                        <div class="circle">
+                            <a><img src="./images/music.jpg" alt="Music Symbol"></a>
+                            </div>
+                    </div>
+                </div>
+                 </div>
+
+
+
+            </div>
+
+        </div>
+
+        
+        <script>
+            const city = document.getElementById('city');
+            console.log(city.value);
+
+            const apiKey = "de5b04cb1a1ce77e257dd02040bdf4bd"
+            
+
+            let search = document.getElementById("searchb");
+            let visible = document.getElementById("vismusic");
+            visible.classList.add("vismusichide")
+
+            search.addEventListener("click", function(){
+                setInterval(function(){
+                    visible.classList.remove("vismusichide");},2000);
+
+                console.log(city.value);
+                const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + `${city.value}`;
+                async function checkWeather()
+            {
+                const response = await fetch(apiUrl + `&appid=${apiKey}`);
+                var data = await response.json()
+                console.log(data['weather'][0]['main']);
+                console.log(data['main']['temp'])
+
+                document.getElementById("tempval").innerHTML = String(data['main']['temp']) + "°";
+                document.getElementById("cityval").innerHTML = String(city.value);
+
+                let wvalue = data['weather'][0]['main'];
+                console.log(document.getElementById("weather-icon").src)
+                console.log(String(wvalue).toLowerCase());
+                
+            if(String(wvalue).toLowerCase() == "clear" )
+            {
+                document.getElementById("weather-icon").src= "./images/" + String(String(wvalue).toLowerCase()) + ".png";
+            }
+            else if (String(wvalue).toLowerCase() == "clouds")
+            {
+                document.getElementById("weather-icon").src= "./images/" + String(String(wvalue).toLowerCase()) + ".png";
+            }
+            else if (String(wvalue).toLowerCase() == "drizzle")
+            {
+                document.getElementById("weather-icon").src= "./images/" + String(String(wvalue).toLowerCase()) + ".png";
+            }
+            else if (String(wvalue).toLowerCase() == "mist" || String(wvalue).toLowerCase() == "haze")
+            {
+                value = "mist"
+                document.getElementById("weather-icon").src= "./images/" + value + ".png";
+            }
+            else if (String(wvalue).toLowerCase() == "rain")
+            {
+                document.getElementById("weather-icon").src= "./images/" + String(String(wvalue).toLowerCase()) + ".png";
+            }
+            else if (String(wvalue).toLowerCase() == "snow")
+            {
+                document.getElementById("weather-icon").src= "./images/" + String(String(wvalue).toLowerCase()) + ".png";
+            }
+
+
+            }
+
+                
+checkWeather();
+            })
+
+
+
+
+        </script>
+    </body>
+</html>

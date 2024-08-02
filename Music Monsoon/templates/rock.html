@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Button Animation</title>
+<style>
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+           background-color: #0a0a0a;
+           overflow: hidden;
+       }
+       .play-button {
+           width: 100px;
+           height: 100px;
+           background-color: #ff6347;
+           border-radius: 50%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           cursor: pointer;
+           transition: transform 1s ease, opacity 1s ease;
+       }
+       .play-symbol {
+           width: 0;
+           height: 0;
+           border-left: 20px solid white;
+           border-top: 10px solid transparent;
+           border-bottom: 10px solid transparent;
+       }
+       .text-box {
+           position: absolute;
+           left: -350px;
+           width: 350px;
+           height: 400px; /* Ensure height is enough to contain the list */
+           padding: 20px;
+           background: linear-gradient(135deg, #000000, #012c69);
+           color: white;
+           border-radius: 10px;
+           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+           opacity: 0;
+           transition: transform 1s ease, opacity 1s ease;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           box-sizing: border-box; /* Ensure padding is included in the height */
+       }
+       .text-box.active {
+           left: 50%;
+           transform: translateX(-50%);
+           opacity: 1;
+       }
+       ul {
+           list-style-type: none;
+           padding: 0;
+           margin: 0;
+           text-align: center;
+           flex: 1; /* Allows ul to take up available space */
+           overflow-y: auto; /* Adds scroll if content exceeds height */
+       }
+       li {
+           margin-bottom: 10px;
+           font-size: 16px;
+           color: #fff;
+       }
+</style>
+</head>
+<body>
+<div class="play-button" id="playButton">
+<div class="play-symbol"></div>
+</div>
+<div class="text-box" id="textBox">
+<img src="../static/roc.jpg" alt="Placeholder Image">
+<br>
+<ul>
+           {% for i in lista %}
+<a href="{{ url_for('play_song', song_name=i) }}"><li>{{ i }}</li></a>
+           {% endfor %}
+</ul>
+</div>
+<script>
+       document.getElementById('playButton').addEventListener('click', function() {
+           this.classList.add('active');
+           document.getElementById('textBox').classList.add('active');
+       });
+</script>
+</body>
+</html>

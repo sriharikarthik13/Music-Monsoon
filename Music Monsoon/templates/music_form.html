@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Upload</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+           background: linear-gradient(135deg, #b8130d, #0f0264);
+           font-family: 'Arial', sans-serif;
+       }
+       .card {
+           width: 100%;
+           max-width: 500px;
+           padding: 20px;
+           box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+           border: none;
+           border-radius: 15px;
+           background-color: white;
+       }
+       .card-header {
+           background-color: #a90038;
+           color: white;
+           font-size: 1.5rem;
+           border-radius: 15px 15px 0 0;
+           text-align: center;
+           padding: 15px;
+           box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+       }
+       .form-group label {
+           font-weight: bold;
+           color: #333;
+       }
+       .form-control-file {
+           border: 1px solid #ced4da;
+           border-radius: 5px;
+           padding: 10px;
+           background-color: #f8f9fa;
+       }
+       .btn-primary {
+           width: 100%;
+           background-color: #007bff;
+           border-color: #007bff;
+           padding: 10px;
+           border-radius: 5px;
+           transition: background-color 0.3s, transform 0.3s;
+       }
+       .btn-primary:hover {
+           background-color: #0056b3;
+           transform: scale(1.05);
+       }
+       .form-group {
+           margin-bottom: 1.5rem;
+       }
+</style>
+</head>
+<body>
+<div class="card">
+<div class="card-header">
+           Upload Your Song
+</div>
+<div class="card-body">
+<form method="POST" enctype="multipart/form-data">
+               {{ form.hidden_tag() }}
+<div class="form-group">
+                   {{ form.songinput(class="form-control-file") }}
+</div>
+<div class="form-group">
+                   {{ form.submit(class="btn btn-primary") }}
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>

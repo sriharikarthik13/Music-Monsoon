@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALUE</title>
+<style>
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+           background-color: #000000;
+       }
+       .center-text {
+           font-size: 24px;
+           color: #00bbff;
+           position: absolute;
+           left: 30%;
+           top: 40%;
+       }
+
+       .center-button {
+        
+        position: absolute;
+        left: 45%;
+        top: 70%;
+     
+       }
+
+       .but{
+        background-color: black; 
+    color: rgb(255, 119, 0); 
+    padding: 10px 20px; 
+
+    cursor: pointer; 
+       }
+</style>
+</head>
+<body>
+<div class="center-text">GREAT YOUR SONG HAS BEEN SUCCESSFULLY STORED</div>
+<br>
+<div class="center-button"><a href="{{url_for('index')}}"><button class="but">CLICK HERE TO GO BACK HOME</button></a></div>
+</body>
+</html>
